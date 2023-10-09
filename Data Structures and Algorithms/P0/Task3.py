@@ -44,3 +44,32 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+codes = set()
+Bangalore_code = "(080)"
+Mobile_numbers_code = "789"
+Telemarketers_code = "140"
+telemarketer_not_found = True
+number_of_calls = 0
+Bangalore_calls = 0
+for call in calls:
+    if call[0][:5] == Bangalore_code:
+        number_of_calls += 1
+        receiver = call[1]
+        if receiver[0] == '(':
+            code_last_index = receiver.index(')')
+            receiver_code = receiver[:code_last_index + 1]
+            if receiver_code == Bangalore_code:
+                Bangalore_calls += 1
+            codes.add(receiver_code)
+        elif receiver[0] in Mobile_numbers_code:
+            codes.add(receiver[:4])
+        elif receiver[:3] == Telemarketers_code and telemarketer_not_found:
+            codes.add(Telemarketers_code)
+            telemarketer_not_found = False
+codes = sorted(codes)
+print("The numbers called by people in Bangalore have codes:")
+for code in codes:
+    print(code)
+print(
+    f"{round((Bangalore_calls / number_of_calls) * 100, 2)} percent of calls from fixed lines in Bangalore are"
+    f" calls to other fixed lines in Bangalore.")

@@ -19,4 +19,23 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+records = dict()
+
+for call in calls:
+    duration = int(call[-1])
+    if call[0] in records.keys():
+        records[call[0]] += duration
+    else:
+        records[call[0]] = duration
+    if call[1] in records.keys():
+        records[call[1]] += duration
+    else:
+        records[call[1]] = duration
+max_duration = 0
+max_number = None
+for key, value in records.items():
+    if value > max_duration:
+        max_duration = value
+        max_number = key
+print(f"{max_number} spent the longest time, {max_duration} seconds, on the phone during September 2016.")
 
