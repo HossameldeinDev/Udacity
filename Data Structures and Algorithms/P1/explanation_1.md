@@ -1,7 +1,16 @@
-The decision to implement the Least Recently Used (LRU) cache using Python's OrderedDict was driven by the need for efficiency and order preservation inherent in cache operations. This data structure is particularly suited for our LRU cache because it inherently maintains the order of items, signifying their usage recency. Such automatic management of item order eliminates the need for complex reordering algorithms or auxiliary data structures, which are necessary with standard dictionaries. This simplification reduces error margins and enhances code maintainability, critical for the robustness of cache systems.
+## Efficiency:
 
-Efficiency, in terms of both time and space, was a paramount consideration. Remarkably, our approach achieves O(1) time complexity for 'get' and 'set' operations. This efficiency stems from OrderedDict's 'move_to_end' and 'popitem' methods, allowing constant-time reordering and eviction—key processes in cache management. In terms of space, our LRU design ensures space complexity remains O(N), directly proportional to the cache's capacity. This bounded usage is crucial, especially in resource-constrained scenarios or high-demand applications, maintaining a balance between performance and resource allocation. By limiting space usage, the design also prevents excessive memory consumption, which could otherwise hamper overall system performance. Overall, the selection of data structures and algorithms was predicated on optimizing key operational efficiencies without compromising the system's integrity and responsiveness.
+Our LRU cache using Python's OrderedDict is efficient:
 
+- Time Efficiency: 'get' and 'set' operations are O(1) thanks to OrderedDict's quick reordering and eviction functions (move_to_end and popitem).
 
+- Space Efficiency: The space complexity is O(N), directly related to the cache's capacity. It keeps memory usage in check.
 
+## Code Design:
+
+We chose OrderedDict for simplicity and performance:
+
+- Simplicity and Clarity: OrderedDict manages order automatically, eliminating the need for manual management. It simplifies LRU logic and keeps the code clean.
+
+- Native Library Advantage: We opted for Python's built-in libraries for reliability and optimization. They are well-tested, widely used, and offer robustness and efficiency.
 

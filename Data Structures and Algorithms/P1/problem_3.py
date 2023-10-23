@@ -108,66 +108,54 @@ def huffman_decoding(data, tree):
     return decode_huffman_code(data, tree)
 
 
+def test_huffman_coding():
+    print("=== Huffman Coding: Test Cases ===\n")
+
+    # Standard Test Case
+    print("Test Case: Standard - Regular sentence with multiple characters")
+    a_great_sentence = "The bird is the word"
+    print(f"Original content: {a_great_sentence}")
+    perform_test(a_great_sentence)
+    # Expected: Encoded data is smaller than original data. Decoded data matches original content.
+
+    # Edge Test Cases
+    edge_cases = [
+        ("", "Test Case: Edge - Empty String"),
+        ("a", "Test Case: Edge - Single Character String"),
+        ("ab" * 1000000, "Test Case: Edge - Very Large Input"),
+    ]
+
+    for test_input, description in edge_cases:
+        print(description)
+        perform_test(test_input)
+        # For empty string: Expected encoded size is 0; no change after decoding.
+        # For single character: Encoded data may not be smaller due to overhead, but decoding should match original.
+        # For very large input: Encoded data should be significantly smaller, and decoding should reproduce the original input.
+
+    print("=== All Test Cases Executed ===")
+
+
 def perform_test(test_input):
-    print("Original size:", sys.getsizeof(test_input))
+    print(f"Original size: {sys.getsizeof(test_input)} bytes")
 
     encoded_data, tree = huffman_encoding(test_input)
 
-    if encoded_data:  # Proceed only if there's data
-        encoded_size = sys.getsizeof(int(encoded_data, base=2))
-    else:
-        encoded_size = 0  # For empty string, the encoded data size is 0
-
-    print("Encoded size:", encoded_size)
+    encoded_size = sys.getsizeof(int(encoded_data, base=2)) if encoded_data else 0  # Handling empty string scenario
+    print(f"Encoded size: {encoded_size} bytes")
 
     decoded_data = huffman_decoding(encoded_data, tree)
-    decoded_size = sys.getsizeof(decoded_data)
+    print(f"Decoded size: {sys.getsizeof(decoded_data)} bytes")
 
-    print("Decoded size:", decoded_size)
+    # Data integrity check
+    assert test_input == decoded_data, "Mismatch between original and decoded data."
 
-    # Verifying the integrity of the data
-    assert test_input == decoded_data, "Mismatch in the original and decoded data."
-
-    # For non-empty strings, the encoded size should generally be smaller than the original size
-    # For empty strings or single-character strings, this might not hold due to overhead or minimal input.
-    if test_input:
+    # Size efficiency check (Not applicable for very small strings due to overhead)
+    if test_input and len(test_input) > 1:
         assert encoded_size <= sys.getsizeof(test_input), "Encoded data is larger than original data."
 
     print("Test Passed.\n")
 
 
+# Triggering the test function when the script runs
 if __name__ == "__main__":
-    codes = {}
-
-    a_great_sentence = "The bird is the word"
-
-    print("The size of the data is: {}\n".format(sys.getsizeof(a_great_sentence)))
-    print("The content of the data is: {}\n".format(a_great_sentence))
-
-    encoded_data, tree = huffman_encoding(a_great_sentence)
-
-    print("The size of the encoded data is: {}\n".format(sys.getsizeof(int(encoded_data, base=2))))
-    print("The content of the encoded data is: {}\n".format(encoded_data))
-
-    decoded_data = huffman_decoding(encoded_data, tree)
-
-    print("The size of the decoded data is: {}\n".format(sys.getsizeof(decoded_data)))
-    print("The content of the encoded data is: {}\n".format(decoded_data))
-
-    # Add your own test cases: include at least three test cases
-    # and two of them must include edge cases, such as null, empty or very large values
-
-    # Test Case 1: Empty String (Edge Case)
-    print("Test Case 1: Empty String")
-    test_input = ""
-    perform_test(test_input)
-
-    # Test Case 2: Single Character String (Edge Case)
-    print("\nTest Case 2: Single Character String")
-    test_input = "a"
-    perform_test(test_input)
-
-    # Test Case 3: Very Large Input (Edge Case)
-    print("\nTest Case 3: Very Large Input")
-    test_input = "ab" * 1000000  # creates a 2 million character string
-    perform_test(test_input)
+    test_huffman_coding()

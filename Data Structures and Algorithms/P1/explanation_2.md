@@ -1,7 +1,15 @@
-The implementation of a file search utility using recursion stems from the need to efficiently handle arbitrary complexity and depths within a directory structure. In scenarios involving filesystems, it is common to encounter nested directories and files, the hierarchy and quantity of which are not predetermined. Utilizing recursive techniques, the code elegantly navigates through each layer of the filesystem, systematically exploring files and subdirectories. This approach abstracts the intricacies of traversing each path and simplifies the logic needed to delve into nested directories, enhancing readability and maintainability of the code.
+## Efficiency
 
-In terms of efficiency, the adopted recursive strategy presents a time complexity of O(n), signifying a direct correlation with the quantity of directories and files present. This is a logical consequence of the need to examine each file and directory to ascertain conformity with the specified suffix criterion. While this exhaustive search is thorough, it mandates interaction with each filesystem element, underscoring the linear relationship between the number of components and the operation duration. Concurrently, space complexity is also tethered to the 'n' parameter due to the stack's utilization in recursive calls — each engagement creating a new layer in the stack corresponding with the current depth of the exploration. Although this approach is memory-intensive, mirroring the breadth and depth of the directory structure, it is a necessary trade-off to maintain the integrity of the search process, ensuring no file is unaccounted for, irrespective of its location in the directory hierarchy. This method, therefore, represents a balanced interplay between algorithmic simplicity and resource allocation efficiency.
+Recursion in our file search utility provides effective navigation through complex directory structures:
 
+- **Time Efficiency:** With a time complexity of O(n), the recursive method ensures a thorough examination of each directory and file, correlating directly with the total number of elements in the filesystem.
 
+- **Space Efficiency:** The space complexity stands at O(n), representing the stack space usage for each recursive call. This mirrors the current exploration depth, providing a balanced approach between thorough search and resource management.
 
+## Code Design
 
+The choice of recursion is anchored in its proficiency in handling complex navigations:
+
+- **Simplicity and Abstraction:** By naturally managing intricate file traversing processes, recursion enhances code readability and maintainability, streamlining the logic necessary for exploring deep, nested directories.
+
+- **Efficient Directory Exploration:** The recursive approach excels in situations with unpredictable directory hierarchies, offering a comprehensive and efficient strategy for deep file searches without sacrificing performance.

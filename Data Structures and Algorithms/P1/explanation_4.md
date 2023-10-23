@@ -1,3 +1,17 @@
-The design for the Active Directory management hinges on two primary choices: the use of the `Group` class and a recursive search function. The `Group` class embodies the essence of an organized structure, simplifying the storage of users and nested subgroups. It naturally corresponds to the real-world concept of hierarchical user groups, providing intuitive handling and storage. Recursion, chosen for the search functionality, aptly addresses the unpredictable depth of nested groups. It allows a thorough, layered search without prior knowledge of the group hierarchy's complexity, ensuring no potential user location is overlooked within the nested structures.
+## Code Design:
 
-Efficiency-wise, the solution presents trade-offs. The time complexity, potentially O(n), arises from the recursive nature of the search, necessitating a traversal through each user and subgroup within the possibly deep nested structure. While this ensures a comprehensive search, the time cost grows with the structure's size and complexity. Concurrently, space complexity is impacted by this recursion, as each function call consumes stack space. Although practical for moderately sized directories, this approach might face scalability challenges for extensive, deeply nested groups. Nonetheless, the strategy provides a straightforward, understandable solution, balancing operational efficiency with the ease of implementation and conceptual clarity.
+Active Directory management leverages intuitive structuring and systematic search capabilities through:
+
+- **`Group` Class Implementation:** Mimicking real-world organizational hierarchies, this design simplifies the containment of users and subgroups. It's a direct, natural representation that promotes organized data handling.
+
+- **Recursive Searching:** Chosen for its inherent ability to navigate through deeply nested structures, the recursive function systematically locates users across varying group levels without complexity constraints.
+
+## Efficiency:
+
+The approach harbors specific efficiency implications:
+
+- **Time Complexity:** The search functionality, recursive in nature, can escalate to O(n) time complexity, especially evident when traversing extensive user groups or deeply nested subgroups, directly influencing operation duration.
+
+- **Space Complexity:** The stack space corresponds to the depth of recursive calls, significant in deep searches. This space demand, though manageable in standard applications, might stress larger, more complex directory structures.
+
+These design choices reflect a preference for conceptual clarity and ease of implementation, with a mindful acceptance of the trade-offs in large-scale efficiency.

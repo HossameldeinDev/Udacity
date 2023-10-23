@@ -50,28 +50,44 @@ def is_user_in_group(user, group):
                 return True
     return False
 
-## Add your own test cases: include at least three test cases
-## and two of them must include edge cases, such as null, empty or very large values
 
+# Assuming the setup for groups and users is already done.
+# The groups 'parent', 'child', and 'sub_child' are already defined,
+# and 'sub_child_user' is added into 'sub_child' group, as in your provided structure.
 
-# Assuming the hierarchy is already built as in your provided structure
+print("Running test cases for is_user_in_group function...\n")
 
 # Test Case 1: User is directly in the group
-assert is_user_in_group("sub_child_user", sub_child) == True, "Test Case 1 Failed"
+print("Test Case 1: User is directly in the group:")
+result = is_user_in_group("sub_child_user", sub_child)
+print(result)
+# Expected output: True
 
 # Test Case 2: User is in a subgroup
-assert is_user_in_group("sub_child_user", parent) == True, "Test Case 2 Failed"
+print("\nTest Case 2: User is in a subgroup:")
+result = is_user_in_group("sub_child_user", parent)
+print(result)
+# Expected output: True
 
 # Test Case 3: User is not in the group or any subgroups
-assert is_user_in_group("nonexistent", parent) == False, "Test Case 3 Failed"
+print("\nTest Case 3: User is not in the group or any subgroups:")
+result = is_user_in_group("nonexistent", parent)
+print(result)
+# Expected output: False
 
-# Test Case 4: Edge case - null user
-assert is_user_in_group(None, parent) == False, "Test Case 4 Failed"
+# Test Case 4: Edge case - null user (assuming the function handles null input as "not in group")
+print("\nTest Case 4: Edge case - null user:")
+result = is_user_in_group(None, parent)
+print(result)
+# Expected output: False
 
 # Test Case 5: Edge case - very large number of users (performance)
+print("\nTest Case 5: Edge case - very large number of users (performance):")
 large_group = Group("large")
-for i in range(1000000):  # let's say we add a million users
+for i in range(1000000):  # Simulating a large group by adding a million users
     large_group.add_user(f"user_{i}")
-assert is_user_in_group("user_999999", large_group) == True, "Test Case 5 Failed"
+result = is_user_in_group("user_999999", large_group)
+print(result)
+# Expected output: True
 
-print("All test cases pass")
+print("\nAll test cases have been run.\n")

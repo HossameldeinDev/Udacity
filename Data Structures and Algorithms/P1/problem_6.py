@@ -89,8 +89,7 @@ def intersection(llist_1, llist_2):
     return result_list
 
 
-## Test case 1
-
+# Test Case 1 (Standard Case)
 linked_list_1 = LinkedList()
 linked_list_2 = LinkedList()
 
@@ -103,11 +102,14 @@ for i in element_1:
 for i in element_2:
     linked_list_2.append(i)
 
-print (union(linked_list_1,linked_list_2))
-print (intersection(linked_list_1,linked_list_2))
+print(union(linked_list_1, linked_list_2))
+# Expected output: elements in either linked_list_1 or linked_list_2, without duplicates
 
-## Test case 2
+print(intersection(linked_list_1, linked_list_2))
+# Expected output: elements common in both linked_list_1 and linked_list_2
 
+
+# Test Case 2 (Standard Case)
 linked_list_3 = LinkedList()
 linked_list_4 = LinkedList()
 
@@ -120,30 +122,39 @@ for i in element_1:
 for i in element_2:
     linked_list_4.append(i)
 
-print (union(linked_list_3,linked_list_4))
-print (intersection(linked_list_3,linked_list_4))
+print(union(linked_list_3, linked_list_4))
+# Expected output: elements in either linked_list_3 or linked_list_4, without duplicates
 
-## Add your own test cases: include at least three test cases
-## and two of them must include edge cases, such as null, empty or very large values
+print(intersection(linked_list_3, linked_list_4))
+# Expected output: elements common in both linked_list_3 and linked_list_4
 
-# Test Case 1 (Edge Case: Empty Lists)
+
+# Test Case 3 (Edge Case: Empty Lists)
 linked_list_5 = LinkedList()
 linked_list_6 = LinkedList()
 
-print(union(linked_list_5, linked_list_6))  # Expected: (empty list)
-print(intersection(linked_list_5, linked_list_6))  # Expected: (empty list)
+print(union(linked_list_5, linked_list_6))
+# Expected output: (empty list)
 
-# Test Case 2 (Edge Case: One list is empty)
+print(intersection(linked_list_5, linked_list_6))
+# Expected output: (empty list)
+
+
+# Test Case 4 (Edge Case: One List is Empty)
 linked_list_7 = LinkedList()
 linked_list_8 = LinkedList()
 
 for i in [1, 2, 3, 4, 5]:
     linked_list_7.append(i)
 
-print(union(linked_list_7, linked_list_8))  # Expected: 1 -> 2 -> 3 -> 4 -> 5
-print(intersection(linked_list_7, linked_list_8))  # Expected: (empty list)
+print(union(linked_list_7, linked_list_8))
+# Expected output: 1 -> 2 -> 3 -> 4 -> 5
 
-# Test Case 3 (Edge Case: Large Values)
+print(intersection(linked_list_7, linked_list_8))
+# Expected output: (empty list)
+
+
+# Test Case 5 (Edge Case: Large Values)
 linked_list_9 = LinkedList()
 linked_list_10 = LinkedList()
 
@@ -153,5 +164,8 @@ for i in [999999999, 888888888]:
 for i in [999999999, 777777777]:
     linked_list_10.append(i)
 
-print(union(linked_list_9, linked_list_10))  # Expected: 888888888 -> 999999999 -> 777777777
-print(intersection(linked_list_9, linked_list_10))  # Expected: 999999999
+print(union(linked_list_9, linked_list_10))
+# Expected output: 888888888 -> 999999999 -> 777777777
+
+print(intersection(linked_list_9, linked_list_10))
+# Expected output: 999999999
