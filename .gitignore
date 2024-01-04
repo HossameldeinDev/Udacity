@@ -1,2 +1,8 @@
 .idea
 .DS_Store
+/mlops/Predict Customer Churn with Clean Code/.ipynb_checkpoints/churn_library-checkpoint.py
+/mlops/Predict Customer Churn with Clean Code/.ipynb_checkpoints/churn_notebook-checkpoint.ipynb
+/mlops/Predict Customer Churn with Clean Code/.ipynb_checkpoints/churn_script_logging_and_tests-checkpoint.py
+/mlops/Predict Customer Churn with Clean Code/.ipynb_checkpoints/Guide-checkpoint.ipynb
+/mlops/Predict Customer Churn with Clean Code/.ipynb_checkpoints/README-checkpoint.md
+/mlops/Predict Customer Churn with Clean Code/churn_tests.log
